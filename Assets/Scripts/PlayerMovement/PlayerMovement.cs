@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey("w"))
         {
             // Left Shift (Sprint) = Player Movement Speed * 1.5 
-            transform.position += transform.TransformDirection(Vector3.forward) * Time.deltaTime * movementSpeed * 1.5f;
+            this.GetComponent<Rigidbody>().velocity += transform.TransformDirection(Vector3.forward) * Time.deltaTime * movementSpeed * 1.5f;
         }
         // Left Shift (Sprint) will not work unless "w" is pressed
         else if (Input.GetKey("w") && !Input.GetKey(KeyCode.LeftShift))

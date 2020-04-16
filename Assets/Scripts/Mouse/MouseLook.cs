@@ -36,9 +36,10 @@ public class MouseLook : MonoBehaviour
                 rotX = 90;
             }
 
-            transform.rotation = Quaternion.Euler(0, rotY, 0);
+            //transform.rotation = Quaternion.Euler(0, rotY, 0);
+            this.GetComponent<Rigidbody>().rotation = Quaternion.Euler(0, rotY, 0);
             GameObject.FindWithTag("MainCamera").transform.rotation = Quaternion.Euler(rotX, rotY, 0);
-
+            //this.GetComponent<Rigidbody>().velocity += Vector3.up * this.jumpHeight;
 
         }
     }
