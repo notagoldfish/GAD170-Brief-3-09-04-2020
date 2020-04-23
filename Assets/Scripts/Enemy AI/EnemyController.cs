@@ -85,6 +85,7 @@ public class EnemyController : MonoBehaviour
         }
         //Initialise CheckIfIShouldWander
         CheckIfIShouldWander();
+
     }
 
     //Makes Face Target, research more into this because I don't quite understand the Quaternion part

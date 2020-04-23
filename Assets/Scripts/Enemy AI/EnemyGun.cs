@@ -3,18 +3,36 @@
 public class EnemyGun : MonoBehaviour
 {
 
-    public float damage = 100f;
-    public float range = 100f;
+    public float damage;
+    public float range;
     public KeyCode interactKey; //Allows for changing the interact button in the editor
-
+    public float fireRate;
     public ParticleSystem muzzleFlash;
+    public GameObject impactEffect;
+    Transform target;
+    public float viewCone;
+
+    private float nextTimeToFire = 0f;
+
+    private void Start()
+    {
+        target = PlayerManager.instance.player.transform;
+    }
 
     void Update()
     {
-        if (Input.GetKeyDown(interactKey))
+        //Line of Sight
+        float dot = Vector3.Dot(transform.forward, (target.position - transform.position).normalized);
+        if (dot > viewCone)
         {
-            Shoot();
+            if (Time.time >= nextTimeToFire && Vector3.Distance(target.transform.position, this.transform.position) <= range)
+            {
+                nextTimeToFire = Time.time + 1f / fireRate;
+                Shoot();
+            }
+            Debug.Log("Quite facing");
         }
+
     }
 
     void Shoot ()
@@ -32,6 +50,10 @@ public class EnemyGun : MonoBehaviour
             {
                 target.TakeDamage(damage);
             }
+
+            GameObject impactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
+            Destroy(impactGO, 2f);
+             
         }
     }
 }
