@@ -151,3 +151,8 @@ public class EnemyController : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, unsafeDistance);
     }
 }
+
+
+
+///With wander should set up a timer so that it doesn't swap a destination when it is already moving
+///Some locations on the nav-mesh don't work with wander. I've got no idea why????
