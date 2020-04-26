@@ -40366,7 +40366,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17624
+  m_Name: pb_Mesh14774
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -52746,9 +52746,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6b0faaa7f7eaf74bba18a284661f7f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
+  speed: 12
   rotateSpeed: 6
-  jumpSpeed: 8
+  jumpSpeed: 12
   gravity: 20
 --- !u!143 &1911231649
 CharacterController:
