@@ -52281,7 +52281,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1821031859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52733,7 +52733,7 @@ MonoBehaviour:
   rotX: 0
   rotY: 0
   rotZ: 0
-  rotationSpeed: 60
+  rotationSpeed: 100
 --- !u!114 &1911231648
 MonoBehaviour:
   m_ObjectHideFlags: 0

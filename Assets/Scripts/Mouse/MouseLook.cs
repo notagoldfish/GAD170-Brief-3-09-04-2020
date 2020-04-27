@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class mouseLook : MonoBehaviour
+public class MouseLook : MonoBehaviour
 {
     public float rotX;
     public float rotY;
