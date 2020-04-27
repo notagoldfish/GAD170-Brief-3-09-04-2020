@@ -17,6 +17,7 @@ public class EnemyGun : MonoBehaviour
     private void Start()
     {
         target = PlayerManager.instance.player.transform;
+        
     }
 
     void Update()
@@ -30,20 +31,20 @@ public class EnemyGun : MonoBehaviour
                 nextTimeToFire = Time.time + 1f / fireRate;
                 Shoot();
             }
-            Debug.Log("Quite facing");
+            //Debug.Log("Quite facing");
         }
 
     }
 
     void Shoot ()
     {
-
+        
         muzzleFlash.Play();
 
         RaycastHit hit;
         if (Physics.Raycast(this.transform.position, this.transform.forward, out hit, range))
         {
-            Debug.Log(hit.transform.name);
+            //Debug.Log(hit.transform.name);
 
             Target target = hit.transform.GetComponent<Target>();
             if (target != null)

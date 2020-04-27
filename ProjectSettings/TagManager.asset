@@ -6,6 +6,7 @@ TagManager:
   tags:
   - player
   - Door
+  - Heart
   layers:
   - Default
   - TransparentFX

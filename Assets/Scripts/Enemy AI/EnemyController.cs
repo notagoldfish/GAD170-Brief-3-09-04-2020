@@ -27,6 +27,16 @@ public class EnemyController : MonoBehaviour
     Vector3 wanderTarget;
     bool isOnRoute = false;
 
+    //Percentage Chance for Heart to Drop
+    public float chanceToDrop = 100;
+    public Transform Heart;
+
+    //Sets up the variable for random number gen
+    private float randomDropHeart = 0;
+
+    //Bool for whether a heart has had the chance to drop
+    public bool hasDropped = false;
+
     //For Wander, Sets Initial References. Could be done better and with less fidley code but this is how the youtube video did it
     private void OnEnable()
     {
@@ -38,6 +48,7 @@ public class EnemyController : MonoBehaviour
         //Locates player object and defines the agent (where the enemy can go without falling off the edge)
         target = PlayerManager.instance.player.transform;
         agent = GetComponent<NavMeshAgent>();
+        randomDropHeart = Random.Range(0f, 100f);
     }
 
     void Update()
@@ -86,6 +97,12 @@ public class EnemyController : MonoBehaviour
         //Initialise CheckIfIShouldWander
         CheckIfIShouldWander();
 
+        //To test death
+        if (Input.GetKeyUp(KeyCode.L))
+        {
+            Die();
+        }
+
     }
 
     //Makes Face Target, research more into this because I don't quite understand the Quaternion part
@@ -101,7 +118,16 @@ public class EnemyController : MonoBehaviour
     {
         //Change Colour? Explode? Ragdoll?
         //Determine Experience?
-        Destroy(gameObject, 5);
+
+        //Check chances and whether a heart has already been spawned, then instantiate a heart prefab in the position of the enemy killed.
+        //However for some NONSENSICAL reason when I only lightly tap the "L" button, from the void update, then this if statement won't run, but the destroy game object will. WHICH MAKES NO SENSE AT ALL
+        if ((randomDropHeart <= chanceToDrop) && (hasDropped == false))
+        {
+            Instantiate(Heart, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
+            hasDropped = true;
+            Debug.Log("Dropped");
+        }
+        Destroy(gameObject, 1f);
     }
 
     //Set myTransform as transform

@@ -577,7 +577,7 @@ Transform:
   m_GameObject: {fileID: 4690272863356715229}
   m_LocalRotation: {x: 0.00000017089764, y: 0.70710635, z: -0.00000003236345, w: 0.70710725}
   m_LocalPosition: {x: 0, y: 3.567, z: 0.837}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
+  m_LocalScale: {x: 6, y: 6, z: 6}
   m_Children: []
   m_Father: {fileID: 4164287905172836545}
   m_RootOrder: 5
@@ -5317,6 +5317,21 @@ PrefabInstance:
     - target: {fileID: 1317135311238324, guid: 04d18243f6061de46a69337ee44c301f, type: 3}
       propertyPath: m_Name
       value: FireBurstLight
+      objectReference: {fileID: 0}
+    - target: {fileID: 108140824657497560, guid: 04d18243f6061de46a69337ee44c301f,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 108140824657497560, guid: 04d18243f6061de46a69337ee44c301f,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.5797377
+      objectReference: {fileID: 0}
+    - target: {fileID: 108140824657497560, guid: 04d18243f6061de46a69337ee44c301f,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4940666242561434, guid: 04d18243f6061de46a69337ee44c301f, type: 3}
       propertyPath: m_LocalPosition.x

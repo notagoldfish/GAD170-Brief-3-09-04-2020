@@ -8,6 +8,8 @@ public class character : MonoBehaviour
     public float rotateSpeed = 6.0f;
     public float jumpSpeed = 8.0f;
     public float gravity = 20.0f;
+    public float maxHealth = 100f; //Here I Am
+    private float currentHealth = 100f; //Here I Am
 
     private Vector3 moveDirection = Vector3.zero;
     private CharacterController controller;
@@ -17,6 +19,7 @@ public class character : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        currentHealth = maxHealth; //Here I Am
     }
 
     // Update is called once per frame
@@ -48,6 +51,24 @@ public class character : MonoBehaviour
 
         moveDirection.y -= gravity * Time.deltaTime;
         controller.Move(moveDirection * Time.deltaTime);
+
+        Debug.Log("Current Health is " + currentHealth);  //Here I Am
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            currentHealth = currentHealth - 10f;
+        }
+    }
+
+    private void OnTriggerStay(Collider collision)  //Here I Am
+    {
+        if (collision.gameObject.CompareTag("Heart"))
+        {
+            if (currentHealth < maxHealth)
+            {
+                currentHealth = currentHealth + 10f;
+                Destroy(collision.gameObject);
+            }
+        }
     }
 }
 
