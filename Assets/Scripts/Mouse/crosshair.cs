@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class crosshair : MonoBehaviour
 {
-    // Start is called before the first frame update
+    Rect crosshairRect;
+    Texture crosshairTexture;
+
     void Start()
     {
-        
+        float crosshairSize = Screen.width * 0.1f;
+        crosshairTexture = Resources.Load("Mats/crosshair") as Texture;
+        crosshairRect = new Rect(Screen.width / 2 - crosshairSize / 2,
+            Screen.height / 2 - crosshairSize / 2,
+            crosshairSize, crosshairSize);
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnGUI()
     {
-        
+        GUI.DrawTexture(crosshairRect, crosshairTexture);
     }
 }
