@@ -537,6 +537,36 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6559521510633208105, guid: e80d4b9de2b59fa42aeee9e98ac006c0,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 6.4274793
+      objectReference: {fileID: 0}
+    - target: {fileID: 6559521510633208105, guid: e80d4b9de2b59fa42aeee9e98ac006c0,
+        type: 3}
+      propertyPath: m_Center.x
+      value: 0.77028155
+      objectReference: {fileID: 0}
+    - target: {fileID: 6559521510633208105, guid: e80d4b9de2b59fa42aeee9e98ac006c0,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 7.2474213
+      objectReference: {fileID: 0}
+    - target: {fileID: 6559521510633208105, guid: e80d4b9de2b59fa42aeee9e98ac006c0,
+        type: 3}
+      propertyPath: m_Center.z
+      value: -0.08053589
+      objectReference: {fileID: 0}
+    - target: {fileID: 6559521510633208105, guid: e80d4b9de2b59fa42aeee9e98ac006c0,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 6.7786865
+      objectReference: {fileID: 0}
+    - target: {fileID: 6559521510633208105, guid: e80d4b9de2b59fa42aeee9e98ac006c0,
+        type: 3}
+      propertyPath: m_Center.y
+      value: -0.2747078
+      objectReference: {fileID: 0}
     - target: {fileID: 2457306067592505696, guid: e80d4b9de2b59fa42aeee9e98ac006c0,
         type: 3}
       propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.size
