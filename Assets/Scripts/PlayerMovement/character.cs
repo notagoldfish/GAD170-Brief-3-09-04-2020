@@ -53,7 +53,7 @@ public class character : MonoBehaviour
         controller.Move(moveDirection * Time.deltaTime);
 
         Debug.Log("Current Health is " + currentHealth);  //Here I Am
-        if (Input.GetKeyDown(KeyCode.H))
+        if (Input.GetKeyDown(KeyCode.H))   //Here I Am
         {
             currentHealth = currentHealth - 10f;
         }
