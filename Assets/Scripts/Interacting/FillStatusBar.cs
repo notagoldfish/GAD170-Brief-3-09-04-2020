@@ -8,6 +8,8 @@ public class FillStatusBar : MonoBehaviour
 
 {
 
+    public character maxHealth;
+    public character currentHealth;
     public character playerHealth;
     public Image fillImage;
     private Slider slider;
@@ -39,17 +41,15 @@ public class FillStatusBar : MonoBehaviour
         float fillValue = playerHealth.currentHealth / playerHealth.maxHealth;
         if(fillValue <= slider.maxValue / 3)
         {
-            fillImage.color = Color.red;
+            fillImage.color = Color.green;
         }
 
-
-
-       //
-       //else if (fillValue > slider.maxValue / 3)
-       //{
-       //   fillImage.color = Color.green;
-       //}
-       // slider.value = fillValue;
+              
+       else if (fillValue > slider.maxValue / 3)
+       {
+          fillImage.color = Color.red;
+       }
+        slider.value = fillValue;
     }
 
 }

@@ -9,7 +9,7 @@ public class character : MonoBehaviour
     public float jumpSpeed = 8.0f;
     public float gravity = 20.0f;
     public float maxHealth = 100.0f; //Here I Am
-    //public float playerHealth = 10.0f; 
+    //public float playerHealth = 100.0f; 
     public float currentHealth = 100.0f; //Here I Am
     public Transform respawnLocation;
     
