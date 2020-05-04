@@ -3,7 +3,7 @@
 public class EnemyGun : MonoBehaviour
 {
 
-    public float damage;
+    public float damage = 10f;
     public float range;
     public KeyCode interactKey; //Allows for changing the interact button in the editor
     public float fireRate;
@@ -50,6 +50,7 @@ public class EnemyGun : MonoBehaviour
             if (target != null)
             {
                 target.TakeDamage(damage);
+                //Debug.Log("Target.TakeDamage(damage) is being called");
             }
 
             GameObject impactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));

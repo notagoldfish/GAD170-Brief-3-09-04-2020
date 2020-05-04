@@ -5406,21 +5406,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: FireBurstLight
       objectReference: {fileID: 0}
-    - target: {fileID: 108140824657497560, guid: 04d18243f6061de46a69337ee44c301f,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 108140824657497560, guid: 04d18243f6061de46a69337ee44c301f,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 0.5797377
-      objectReference: {fileID: 0}
-    - target: {fileID: 108140824657497560, guid: 04d18243f6061de46a69337ee44c301f,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4940666242561434, guid: 04d18243f6061de46a69337ee44c301f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -5463,6 +5448,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4940666242561434, guid: 04d18243f6061de46a69337ee44c301f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 108140824657497560, guid: 04d18243f6061de46a69337ee44c301f,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 108140824657497560, guid: 04d18243f6061de46a69337ee44c301f,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.5797377
+      objectReference: {fileID: 0}
+    - target: {fileID: 108140824657497560, guid: 04d18243f6061de46a69337ee44c301f,
+        type: 3}
+      propertyPath: m_Color.b
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

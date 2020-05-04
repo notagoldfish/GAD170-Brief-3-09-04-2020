@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class character : MonoBehaviour
 {
@@ -8,11 +9,15 @@ public class character : MonoBehaviour
     public float rotateSpeed = 6.0f;
     public float jumpSpeed = 8.0f;
     public float gravity = 20.0f;
-    public float maxHealth = 100.0f; //Here I Am
-    //public float playerHealth = 100.0f; 
-    public float currentHealth = 100.0f; //Here I Am
+    public float maxHealth = 100f; //Here I Am
+    public float currentHealth = 100f; //Here I Am
     public Transform respawnLocation;
-    
+
+    //HealthBar and Experience Bar and Text
+    public HealthBar healthBar;
+    public ExperienceBar experienceBar;
+    public GameObject levelText;
+
 
     private Vector3 moveDirection = Vector3.zero;
     private CharacterController controller;
@@ -40,6 +45,9 @@ public class character : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         currentHealth = maxHealth; //Here I Am
+        //Healthbar Setting
+        healthBar.SetMaxHealth(maxHealth);
+        experienceBar.SetMaxExperience(nextLevelXP);
     }
 
     // Update is called once per frame
@@ -89,7 +97,7 @@ public class character : MonoBehaviour
         //Debug.Log("Current Health is " + currentHealth);  //Here I Am
         if (Input.GetKeyDown(KeyCode.H))   //Here I Am
         {
-            currentHealth = currentHealth - 10f;
+            currentHealth = currentHealth - 10;
         }
         //Debug.Log("Current XP is " + currentXP);
 
@@ -97,6 +105,17 @@ public class character : MonoBehaviour
         {
             LevelUp();
         }
+
+        //Set HealthBar and Experience Bar
+        healthBar.SetHealth(currentHealth);
+        experienceBar.SetExperience(currentXP);
+
+        //Healthbar and Experience Bar Setting
+        healthBar.SetMaxHealth(maxHealth);
+        experienceBar.SetMaxExperience(nextLevelXP);
+
+        //Set Experience Level Text
+        GameObject.Find("LevelText").GetComponent<Text>().text = currentLevel.ToString();
 
     }
 
@@ -126,7 +145,7 @@ public class character : MonoBehaviour
         {
             if (currentHealth < maxHealth)
             {
-                currentHealth = currentHealth + 10f;
+                currentHealth = currentHealth + 10;
                 Destroy(collision.gameObject);
             }
         }
@@ -145,7 +164,7 @@ public class character : MonoBehaviour
     void LevelUp ()
     {
         currentLevel++;
-        maxHealth = maxHealth * 1f + levelUpIncreases;
+        maxHealth = maxHealth * 1 + levelUpIncreases;
         currentHealth = maxHealth;
         damage = damage * 1f + levelUpIncreases/5f;
         nextLevelXP = nextLevelXP + (nextLevelXP * 1 + nextLevelPercentIncrease);
@@ -154,6 +173,8 @@ public class character : MonoBehaviour
     public void TakeDamage(float amount)
     {
         currentHealth -= amount;
+        //Debug.Log("TakeDamage is happening");
+        //Debug.Log(amount);
     }
 
     private void Die()
