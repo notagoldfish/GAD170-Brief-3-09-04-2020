@@ -28,14 +28,23 @@ public class EnemyController : MonoBehaviour
     bool isOnRoute = false;
 
     //Percentage Chance for Heart to Drop
-    public float chanceToDrop = 100;
+    public float chanceToDrop = 50;
     public Transform Heart;
 
     //Sets up the variable for random number gen
     private float randomDropHeart = 0;
 
     //Bool for whether a heart has had the chance to drop
-    private bool hasDropped = false;
+    private bool hasDroppedHeart = false;
+
+    //Explosion Effect
+    public ParticleSystem explodeEffect;
+
+    //Experience Variables
+    public int minXP = 2;
+    public int maxXP = 3;
+    private int xpDropAmount = 5;
+    public Transform XP;
 
     //For Wander, Sets Initial References. Could be done better and with less fidley code but this is how the youtube video did it
     private void OnEnable()
@@ -49,6 +58,8 @@ public class EnemyController : MonoBehaviour
         target = PlayerManager.instance.player.transform;
         agent = GetComponent<NavMeshAgent>();
         randomDropHeart = Random.Range(0f, 100f);
+        xpDropAmount = Random.Range(minXP, maxXP);
+        //Debug.Log("XP Drop Amount is " + xpDropAmount);
     }
 
     void Update()
@@ -120,14 +131,20 @@ public class EnemyController : MonoBehaviour
         //Determine Experience?
 
         //Check chances and whether a heart has already been spawned, then instantiate a heart prefab in the position of the enemy killed.
-        //However for some NONSENSICAL reason when I only lightly tap the "L" button, from the void update, then this if statement won't run, but the destroy game object will. WHICH MAKES NO SENSE AT ALL
-        if ((randomDropHeart <= chanceToDrop) && (hasDropped == false))
+        if ((randomDropHeart <= chanceToDrop) && (hasDroppedHeart == false))
         {
             Instantiate(Heart, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
-            hasDropped = true;
-            Debug.Log("Dropped");
+            hasDroppedHeart = true;
+            //Debug.Log("Dropped Heart");
+        }
+        if (xpDropAmount > 0)
+        {
+            Instantiate(XP, new Vector3(gameObject.transform.position.x + Random.Range(-1f, 1f), gameObject.transform.position.y, gameObject.transform.position.z + Random.Range(-1f, 1f)), Quaternion.identity);
+            xpDropAmount--;
+            //Debug.Log("Dropped XP");
         }
         Destroy(gameObject, 1f);
+        explodeEffect.Play();
     }
 
     //Set myTransform as transform

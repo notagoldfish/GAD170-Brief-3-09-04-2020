@@ -8,6 +8,7 @@ TagManager:
   - Door
   - Heart
   - Void
+  - Experience
   layers:
   - Default
   - TransparentFX

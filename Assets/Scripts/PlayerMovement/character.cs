@@ -8,15 +8,32 @@ public class character : MonoBehaviour
     public float rotateSpeed = 6.0f;
     public float jumpSpeed = 8.0f;
     public float gravity = 20.0f;
-    public float maxHealth = 10.0f; //Here I Am
+    public float maxHealth = 100.0f; //Here I Am
     //public float playerHealth = 10.0f; 
-    public float currentHealth = 10.0f; //Here I Am
+    public float currentHealth = 100.0f; //Here I Am
     public Transform respawnLocation;
     
 
     private Vector3 moveDirection = Vector3.zero;
     private CharacterController controller;
     private int jumps;
+
+    //Shooting
+    public float damage = 10f;
+    public float range = 100f;
+    public KeyCode shootKey;
+    public Camera fpsCam;
+    public ParticleSystem muzzleFlash;
+    public GameObject impactEffect;
+    public float fireRate = 15f;
+    private float nextTimeToFire = 0f;
+
+    //Experience Variables
+    public int currentXP = 0;
+    public int nextLevelXP = 100;
+    public int currentLevel = 1;
+    public int nextLevelPercentIncrease = 10;
+    public int levelUpIncreases = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -60,10 +77,46 @@ public class character : MonoBehaviour
             Die();
         }
 
-        Debug.Log("Current Health is " + currentHealth);  //Here I Am
+        if ((Input.GetKey(shootKey)) && Time.time >= nextTimeToFire)
+        {
+            nextTimeToFire = Time.time + 1f / fireRate;
+            Shoot();
+        }
+
+        Debug.DrawRay(fpsCam.transform.position, fpsCam.transform.forward * range, Color.green);
+
+
+        //Debug.Log("Current Health is " + currentHealth);  //Here I Am
         if (Input.GetKeyDown(KeyCode.H))   //Here I Am
         {
             currentHealth = currentHealth - 10f;
+        }
+        //Debug.Log("Current XP is " + currentXP);
+
+        if (currentXP >= nextLevelXP)
+        {
+            LevelUp();
+        }
+
+    }
+
+    void Shoot()
+    {
+        muzzleFlash.Play();
+
+        RaycastHit hit;
+        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
+        {
+            //Debug.Log(hit.transform.name);
+
+            EnemyController target = hit.transform.GetComponent<EnemyController>();
+            if (target != null)
+            {
+                target.TakeDamage(damage);
+            }
+
+            GameObject plImpactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
+            Destroy(plImpactGO, 1f);
         }
     }
 
@@ -80,8 +133,22 @@ public class character : MonoBehaviour
         if (collision.gameObject.CompareTag("Void"))
         {
             currentHealth = -1;
-            Debug.Log("Fell");
+            //Debug.Log("Fell");
         }
+        if (collision.gameObject.CompareTag("Experience"))
+        {
+            currentXP = currentXP + Random.Range(10, 20);
+            Destroy(collision.gameObject);
+        }
+    }
+
+    void LevelUp ()
+    {
+        currentLevel++;
+        maxHealth = maxHealth * 1f + levelUpIncreases;
+        currentHealth = maxHealth;
+        damage = damage * 1f + levelUpIncreases/5f;
+        nextLevelXP = nextLevelXP + (nextLevelXP * 1 + nextLevelPercentIncrease);
     }
 
     public void TakeDamage(float amount)
@@ -89,7 +156,7 @@ public class character : MonoBehaviour
         currentHealth -= amount;
     }
 
-    public void Die()
+    private void Die()
     {
         transform.position = new Vector3(respawnLocation.transform.position.x, respawnLocation.transform.position.y, respawnLocation.transform.position.z);
         currentHealth = maxHealth;

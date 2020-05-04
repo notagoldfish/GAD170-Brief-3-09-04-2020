@@ -31,7 +31,7 @@ public class EnemyGun : MonoBehaviour
                 nextTimeToFire = Time.time + 1f / fireRate;
                 Shoot();
             }
-            //Debug.Log("Quite facing");
+            ////Debug.Log("Quite facing");
         }
 
     }
@@ -44,7 +44,7 @@ public class EnemyGun : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(this.transform.position, this.transform.forward, out hit, range))
         {
-            //Debug.Log(hit.transform.name);
+            ////Debug.Log(hit.transform.name);
 
             character target = hit.transform.GetComponent<character>();
             if (target != null)
