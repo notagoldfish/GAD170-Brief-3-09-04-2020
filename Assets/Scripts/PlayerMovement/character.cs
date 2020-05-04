@@ -8,8 +8,10 @@ public class character : MonoBehaviour
     public float rotateSpeed = 6.0f;
     public float jumpSpeed = 8.0f;
     public float gravity = 20.0f;
-    public float maxHealth = 100f; //Here I Am
-    private float currentHealth = 100f; //Here I Am
+    public float maxHealth = 10.0f; //Here I Am
+    public float playerHealth = 10.0f; 
+    public float currentHealth = 10.0f; //Here I Am
+    
 
     private Vector3 moveDirection = Vector3.zero;
     private CharacterController controller;
