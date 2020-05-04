@@ -9,7 +9,7 @@ public class crosshair : MonoBehaviour
 
     void Start()
     {
-
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     void OnGUI()

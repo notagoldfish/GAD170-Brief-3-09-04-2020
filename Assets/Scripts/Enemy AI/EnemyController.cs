@@ -35,7 +35,7 @@ public class EnemyController : MonoBehaviour
     private float randomDropHeart = 0;
 
     //Bool for whether a heart has had the chance to drop
-    public bool hasDropped = false;
+    private bool hasDropped = false;
 
     //For Wander, Sets Initial References. Could be done better and with less fidley code but this is how the youtube video did it
     private void OnEnable()
@@ -97,12 +97,12 @@ public class EnemyController : MonoBehaviour
         //Initialise CheckIfIShouldWander
         CheckIfIShouldWander();
 
-        //To test death
-        if (Input.GetKeyUp(KeyCode.L))
-        {
-            Die();
-        }
+    }
 
+    //Take Damage by amount from the gun of the player
+    public void TakeDamage(float amount)
+    {
+        health -= amount;
     }
 
     //Makes Face Target, research more into this because I don't quite understand the Quaternion part

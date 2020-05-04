@@ -9,8 +9,9 @@ public class character : MonoBehaviour
     public float jumpSpeed = 8.0f;
     public float gravity = 20.0f;
     public float maxHealth = 10.0f; //Here I Am
-    public float playerHealth = 10.0f; 
+    //public float playerHealth = 10.0f; 
     public float currentHealth = 10.0f; //Here I Am
+    public Transform respawnLocation;
     
 
     private Vector3 moveDirection = Vector3.zero;
@@ -54,6 +55,11 @@ public class character : MonoBehaviour
         moveDirection.y -= gravity * Time.deltaTime;
         controller.Move(moveDirection * Time.deltaTime);
 
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+
         Debug.Log("Current Health is " + currentHealth);  //Here I Am
         if (Input.GetKeyDown(KeyCode.H))   //Here I Am
         {
@@ -71,6 +77,22 @@ public class character : MonoBehaviour
                 Destroy(collision.gameObject);
             }
         }
+        if (collision.gameObject.CompareTag("Void"))
+        {
+            currentHealth = -1;
+            Debug.Log("Fell");
+        }
+    }
+
+    public void TakeDamage(float amount)
+    {
+        currentHealth -= amount;
+    }
+
+    public void Die()
+    {
+        transform.position = new Vector3(respawnLocation.transform.position.x, respawnLocation.transform.position.y, respawnLocation.transform.position.z);
+        currentHealth = maxHealth;
     }
 }
 

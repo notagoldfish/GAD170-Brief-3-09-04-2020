@@ -46,7 +46,7 @@ public class EnemyGun : MonoBehaviour
         {
             //Debug.Log(hit.transform.name);
 
-            Target target = hit.transform.GetComponent<Target>();
+            character target = hit.transform.GetComponent<character>();
             if (target != null)
             {
                 target.TakeDamage(damage);
