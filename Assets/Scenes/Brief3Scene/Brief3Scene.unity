@@ -26688,7 +26688,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0.03125, y: 0.12109375, z: 0.02734375, w: -0.0390625}
+  m_BoundingSphereOverride: {x: 2.047e-42, y: 1.05e-43, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -39386,7 +39386,7 @@ GameObject:
   - component: {fileID: 962658615}
   - component: {fileID: 962658614}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56664,6 +56664,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AgentTypeID
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408256418462278488, guid: 42744e269cec65a44a6e44b0656f47b1,
+        type: 3}
+      propertyPath: damage
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42744e269cec65a44a6e44b0656f47b1, type: 3}
